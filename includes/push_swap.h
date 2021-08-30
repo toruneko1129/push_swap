@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/30 21:59:40 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/08/31 01:22:23 by hkawakit         ###   ########.fr       */
+/*   Created: 2021/08/31 01:20:24 by hkawakit          #+#    #+#             */
+/*   Updated: 2021/08/31 01:20:31 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-int	main(int argc, char **argv)
-{
-	ft_putnbr_fd(argc, 1);
-	ft_putendl_fd(argv[0], 1);
-	return (0);
-}
+# include "../libft/libft.h"
+
+#endif
