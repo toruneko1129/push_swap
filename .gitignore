@@ -1,5 +1,5 @@
 *.o
 *.a
-srcs/*/*.o
-srcs/push_swap/push_swap
-srcs/checker/checker
+srcs/*.o
+push_swap
+checker
