@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 17:46:37 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/08/31 23:59:16 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/01 02:13:56 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ static void	check_isinteger(char *str)
 	if (*str == '+' || *str == '-')
 		++str;
 	if (!*str)
-		print_error();
+		print_error_exit();
 	while (*str)
 	{
 		if (!ft_isdigit(*str))
-			print_error();
+			print_error_exit();
 		++str;
 	}
 }
@@ -40,30 +40,46 @@ static void	check_isrange_of_int(char *str)
 	while (*str && (res < off || (res == off && *str - '0' <= lim)))
 		res = res * 10 + *(str++) - '0';
 	if (*str)
-		print_error();
+		print_error_exit();
 }
 
-static void	check_val_duplicate(int argc, char **argv)
+static int	*get_intarr_from_argv(int argc, char **argv)
 {
-	int		res;
+	int		*arr;
+	int		i;
+
+	arr = (int *)malloc((argc - 1) * sizeof(int));
+	if (arr == NULL)
+		print_error_exit();
+	i = 0;
+	while (++i < argc)
+		*(arr + i - 1) = ft_atoi(argv[i]);
+	return (arr);
+}
+
+static void	check_val_duplicate(int argc, int *arr)
+{
 	int		i;
 	int		j;
 
-	i = 0;
-	while (++i < argc)
+	i = -1;
+	while (++i < argc - 1)
 	{
-		res = ft_atoi(argv[i]);
-		j = 0;
+		j = -1;
 		while (++j < i)
 		{
-			if (ft_atoi(argv[j]) == res)
-				print_error();
+			if (arr[i] == arr[j])
+			{
+				free(arr);
+				print_error_exit();
+			}
 		}
 	}
 }
 
-void	check_argv(int argc, char **argv)
+int		*check_argv(int argc, char **argv)
 {
+	int		*arr;
 	int		i;
 
 	if (argc == 1)
@@ -74,5 +90,12 @@ void	check_argv(int argc, char **argv)
 		check_isinteger(argv[i]);
 		check_isrange_of_int(argv[i]);
 	}
-	check_val_duplicate(argc, argv);
+	arr = get_intarr_from_argv(argc, argv);
+	check_val_duplicate(argc, arr);
+	for (int j = 0; j < argc - 1; ++j)
+	{
+		ft_putnbr_fd(arr[j], 1);
+		ft_putchar_fd('\n', 1);
+	}
+	return (arr);
 }
