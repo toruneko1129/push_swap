@@ -1,7 +1,8 @@
 NAME_PS	=	push_swap
 NAME_CK	=	checker
 SRCDIR	=	./srcs
-SRCLIST	=	
+SRCLIST	=	check_argv.c \
+			print_error.c
 SRCS_PS	=	$(addprefix $(SRCDIR)/, $(SRCLIST))
 SRCS_PS	+=	$(SRCDIR)/push_swap.c
 SRCS_CK	=	$(addprefix $(SRCDIR)/, $(SRCLIST))
