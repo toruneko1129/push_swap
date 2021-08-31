@@ -39,6 +39,6 @@ fclean: clean
 
 re: fclean $(NAME_PS)
 
-bonus: $(NAME_CK)
+bonus: $(NAME_PS) $(NAME_CK)
 
 .PHONY: all clean fclean re bonus
