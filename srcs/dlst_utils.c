@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 21:55:25 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/02 00:01:37 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/02 00:14:06 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,26 @@ t_dlst	*dlstnew(int val)
 	return (res);
 }
 
-void	dlstadd_front(t_dlst **lst, t_dlst *new)
+void	dlstadd_front(t_dlst **dlst, t_dlst *new)
 {
-	if (lst == NULL || new == NULL)
+	if (dlst == NULL || *dlst == NULL || new == NULL)
 		return ;
-	new->next = *lst;
-	new->prev = (*lst)->prev;
-	(*lst)->prev->next = new;
-	(*lst)->prev = new;
-	*lst = new;
+	new->next = *dlst;
+	new->prev = (*dlst)->prev;
+	(*dlst)->prev->next = new;
+	(*dlst)->prev = new;
+	*dlst = new;
+}
+
+int	dlstsize(t_dlst *dlst)
+{
+	int		size;
+
+	size = 0;
+	while (dlst->val != NIL)
+	{
+		++size;
+		dlst = dlst->next;
+	}
+	return (size);
 }
