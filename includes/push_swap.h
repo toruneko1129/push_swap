@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 01:20:24 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/02 00:13:02 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/02 00:33:52 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	check_init_failed(t_dlst *stack_a, t_dlst *stack_b);
 t_dlst	*dlstnew(int val);
 void	dlstadd_front(t_dlst **lst, t_dlst *new);
 int		dlstsize(t_dlst *dlst);
+t_dlst	*dlstlast(t_dlst *dlst);
+void	dlstadd_back(t_dlst **dlst, t_dlst *new);
 void	free_all(t_dlst *stack_a, t_dlst *stack_b);
 void	print_error_exit(void);
 
