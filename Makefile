@@ -4,6 +4,7 @@ SRCDIR	=	./srcs
 SRCLIST	=	check_argv.c \
 			malloc_free_utils.c \
 			dlst_utils.c \
+			dlst_utils2.c \
 			print_error_exit.c
 SRCS_PS	=	$(SRCDIR)/push_swap.c
 SRCS_PS	+=	$(addprefix $(SRCDIR)/, $(SRCLIST))
