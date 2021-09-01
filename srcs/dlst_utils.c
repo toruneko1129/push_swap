@@ -1,26 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   dlst_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/30 21:59:40 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/02 00:03:10 by hkawakit         ###   ########.fr       */
+/*   Created: 2021/09/01 21:55:25 by hkawakit          #+#    #+#             */
+/*   Updated: 2021/09/02 00:01:37 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include "../includes/debug.h"
 
-int	main(int argc, char **argv)
+t_dlst	*dlstnew(int val)
 {
-	t_dlst	*stack_a;
-	t_dlst	*stack_b;
+	t_dlst	*res;
 
-	check_argv(argc, argv);
-	stack_a = dlstnew(-1);
-	stack_b = dlstnew(-1);
-	check_init_failed(stack_a, stack_b);
-	return (0);
+	res = (t_dlst *)malloc(sizeof(t_dlst));
+	if (res == NULL)
+		return (NULL);
+	res->val = val;
+	res->prev = res;
+	res->next = res;
+	return (res);
+}
+
+void	dlstadd_front(t_dlst **lst, t_dlst *new)
+{
+	if (lst == NULL || new == NULL)
+		return ;
+	new->next = *lst;
+	new->prev = (*lst)->prev;
+	(*lst)->prev->next = new;
+	(*lst)->prev = new;
+	*lst = new;
 }

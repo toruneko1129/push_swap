@@ -4,3 +4,4 @@ srcs/*.o
 push_swap
 checker
 checker_Mac
+includes/debug.h

@@ -2,11 +2,13 @@ NAME_PS	=	push_swap
 NAME_CK	=	checker
 SRCDIR	=	./srcs
 SRCLIST	=	check_argv.c \
+			malloc_free_utils.c \
+			dlst_utils.c \
 			print_error_exit.c
-SRCS_PS	=	$(addprefix $(SRCDIR)/, $(SRCLIST))
-SRCS_PS	+=	$(SRCDIR)/push_swap.c
-SRCS_CK	=	$(addprefix $(SRCDIR)/, $(SRCLIST))
-SRCS_CK	+=	$(SRCDIR)/checker.c
+SRCS_PS	=	$(SRCDIR)/push_swap.c
+SRCS_PS	+=	$(addprefix $(SRCDIR)/, $(SRCLIST))
+SRCS_CK	=	$(SRCDIR)/checker.c
+SRCS_CK	+=	$(addprefix $(SRCDIR)/, $(SRCLIST))
 OBJS_PS	=	$(SRCS_PS:.c=.o)
 OBJS_CK	=	$(SRCS_CK:.c=.o)
 INCLUDE	=	-I ./includes
