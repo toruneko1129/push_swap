@@ -3,14 +3,18 @@ NAME_CK	=	checker
 SRCDIR	=	./srcs
 SRCLIST	=	check_argv.c \
 			load_stack.c \
+			check_issorted.c \
 			print_error_exit.c \
 			malloc_free_utils.c \
 			dlst_utils.c \
 			dlst_utils2.c
-SRCS_PS	=	$(SRCDIR)/push_swap.c
-SRCS_PS	+=	$(addprefix $(SRCDIR)/, $(SRCLIST))
-SRCS_CK	=	$(SRCDIR)/checker.c
-SRCS_CK	+=	$(addprefix $(SRCDIR)/, $(SRCLIST))
+PS_LIST	=	push_swap.c \
+			solve.c
+CK_LIST	=	checker.c
+SRCS_PS	=	$(addprefix $(SRCDIR)/, $(PS_LIST)) \
+			$(addprefix $(SRCDIR)/, $(SRCLIST))
+SRCS_CK	=	$(addprefix $(SRCDIR)/, $(CK_LIST)) \
+			$(addprefix $(SRCDIR)/, $(SRCLIST))
 OBJS_PS	=	$(SRCS_PS:.c=.o)
 OBJS_CK	=	$(SRCS_CK:.c=.o)
 INCLUDE	=	-I ./includes
