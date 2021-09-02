@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 17:11:21 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/02 15:22:21 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/02 23:33:15 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	get_val(int argc, char **argv, int num)
 	return (val);
 }
 
-int	load_stack(int argc, char **argv, t_dlst **stack_a)
+void	load_stack(int argc, char **argv, t_dlst **stack_a, t_dlst **stack_b)
 {
 	int		val;
 	t_dlst	*res;
@@ -39,8 +39,10 @@ int	load_stack(int argc, char **argv, t_dlst **stack_a)
 		val = get_val(argc, argv, ft_atoi(argv[i]));
 		res = dlstnew(val);
 		if (res == NULL)
-			return (FAILED);
+		{
+			free_all(stack_a, stack_b, NULL);
+			print_error_exit();
+		}
 		dlstadd_back(stack_a, res);
 	}
-	return (SUCCESS);
 }

@@ -3,10 +3,10 @@ NAME_CK	=	checker
 SRCDIR	=	./srcs
 SRCLIST	=	check_argv.c \
 			load_stack.c \
+			print_error_exit.c \
 			malloc_free_utils.c \
 			dlst_utils.c \
-			dlst_utils2.c \
-			print_error_exit.c
+			dlst_utils2.c
 SRCS_PS	=	$(SRCDIR)/push_swap.c
 SRCS_PS	+=	$(addprefix $(SRCDIR)/, $(SRCLIST))
 SRCS_CK	=	$(SRCDIR)/checker.c
