@@ -13,10 +13,15 @@ SRCLIST	=	check_argv.c \
 PS_LIST	=	push_swap.c \
 			solve.c
 CK_LIST	=	checker.c
+GNLDIR	=	./get_next_line
+GNLLIST	=	get_next_line_bonus.c \
+			get_next_line_utils_bonus.c
 SRCS_PS	=	$(addprefix $(SRCDIR)/, $(PS_LIST)) \
-			$(addprefix $(SRCDIR)/, $(SRCLIST))
+			$(addprefix $(SRCDIR)/, $(SRCLIST)) \
+			$(addprefix $(GNLDIR)/, $(GNLLIST))
 SRCS_CK	=	$(addprefix $(SRCDIR)/, $(CK_LIST)) \
-			$(addprefix $(SRCDIR)/, $(SRCLIST))
+			$(addprefix $(SRCDIR)/, $(SRCLIST)) \
+			$(addprefix $(GNLDIR)/, $(GNLLIST))
 OBJS_PS	=	$(SRCS_PS:.c=.o)
 OBJS_CK	=	$(SRCS_CK:.c=.o)
 INCLUDE	=	-I ./includes
@@ -36,7 +41,7 @@ $(NAME_CK): $(OBJS_CK)
 	make bonus -C $(LIBDIR)
 	$(CC) $(CFLAG) $(INCLUDE) -o $@ $^ $(LIBFT)
 
-all: $(NAME_PS)
+all: $(NAME_PS) $(NAME_CK)
 
 clean:
 	make clean -C $(LIBDIR)
@@ -48,8 +53,8 @@ fclean: clean
 	rm -f $(NAME_PS)
 	rm -f $(NAME_CK)
 
-re: fclean $(NAME_PS)
+re: fclean all 
 
-bonus: $(NAME_PS) $(NAME_CK)
+bonus: all 
 
 .PHONY: all clean fclean re bonus

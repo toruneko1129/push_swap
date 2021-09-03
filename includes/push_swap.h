@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 01:20:24 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/03 21:28:02 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/04 00:27:10 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "../libft/libft.h"
+# include "../get_next_line/get_next_line_bonus.h"
 # define STDIN 0
 # define STDOUT 1
 # define STDERR 2
