@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 23:10:13 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/03 16:20:52 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/03 16:35:12 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,9 @@
 
 void	free_all(t_dlst **a, t_dlst **b, t_dlst **cmds)
 {
-	if (a != NULL)
-		dlstclear(a);
-	if (b != NULL)
-		dlstclear(b);
-	if (cmds != NULL)
-		dlstclear(cmds);
+	dlstclear(a);
+	dlstclear(b);
+	dlstclear(cmds);
 }
 
 void	check_init_failed_stack(t_dlst **stack_a, t_dlst **stack_b)
