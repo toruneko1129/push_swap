@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 01:20:24 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/03 00:26:58 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/03 16:15:25 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,12 @@ typedef struct s_dlst
 }	t_dlst;
 
 void	check_argv(int argc, char **argv);
-void	check_init_failed(t_dlst **stack_a, t_dlst **stack_b);
+void	check_init_failed_stack(t_dlst **stack_a, t_dlst **stack_b);
 void	load_stack(int argc, char **argv, t_dlst **stack_a, t_dlst **stack_b);
-void	solve(t_dlst **stack_a, t_dlst **stack_b, t_list **cmds);
+void	check_init_failed_cmds(t_dlst **a, t_dlst **b, t_dlst **cmds);
+void	solve(t_dlst **stack_a, t_dlst **stack_b, t_dlst **cmds);
 int		check_issorted(t_dlst *stack_a, t_dlst *stack_b);
-void	free_all(t_dlst **stack_a, t_dlst **stack_b, t_list **cmds);
+void	free_all(t_dlst **stack_a, t_dlst **stack_b, t_dlst **cmds);
 void	print_error_exit(void);
 t_dlst	*dlstnew(int val);
 void	dlstadd_front(t_dlst **lst, t_dlst *new);
