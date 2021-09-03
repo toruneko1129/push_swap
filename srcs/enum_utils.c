@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 18:08:30 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/03 18:35:08 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/03 18:50:27 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,27 +41,29 @@ char	*cmd_type_tostr(int type)
 
 int	cmd_str_totype(char *str)
 {
-	if (!ft_strncmp(str, "sa", 2))
+	const size_t	len = ft_strlen(str);
+
+	if (!ft_strncmp(str, "sa\n", len))
 		return (SA);
-	else if (!ft_strncmp(str, "sb", 2))
+	else if (!ft_strncmp(str, "sb\n", len))
 		return (SB);
-	else if (!ft_strncmp(str, "ss", 2))
+	else if (!ft_strncmp(str, "ss\n", len))
 		return (SS);
-	else if (!ft_strncmp(str, "pa", 2))
+	else if (!ft_strncmp(str, "pa\n", len))
 		return (PA);
-	else if (!ft_strncmp(str, "pb", 2))
+	else if (!ft_strncmp(str, "pb\n", len))
 		return (PB);
-	else if (!ft_strncmp(str, "rra", 3))
+	else if (!ft_strncmp(str, "rra\n", len))
 		return (RRA);
-	else if (!ft_strncmp(str, "rrb", 3))
+	else if (!ft_strncmp(str, "rrb\n", len))
 		return (RRB);
-	else if (!ft_strncmp(str, "rrr", 3))
+	else if (!ft_strncmp(str, "rrr\n", len))
 		return (RRR);
-	else if (!ft_strncmp(str, "ra", 2))
+	else if (!ft_strncmp(str, "ra\n", len))
 		return (RA);
-	else if (!ft_strncmp(str, "rb", 2))
+	else if (!ft_strncmp(str, "rb\n", len))
 		return (RB);
-	else if (!ft_strncmp(str, "rr", 2))
+	else if (!ft_strncmp(str, "rr\n", len))
 		return (RR);
 	return (NIL);
 }
