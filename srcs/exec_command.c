@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 17:48:45 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/03 22:06:03 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/03 22:29:03 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,15 @@ static void	exec_cmd_rotate(t_dlst **stack)
 	*stack = (*stack)->next;
 }
 
+static void	exec_cmd_reverse_rotate(t_dlst **stack)
+{
+	if ((*stack)->next->val == NIL)
+		return ;
+	(*stack)->prev->val = (*stack)->prev->prev->val;
+	(*stack)->prev->prev->val = NIL;
+	*stack = (*stack)->prev;
+}
+
 void	exec_command(int type, t_dlst **stack_a, t_dlst **stack_b)
 {
 	if (type == SA || type == SS)
@@ -59,4 +68,8 @@ void	exec_command(int type, t_dlst **stack_a, t_dlst **stack_b)
 		exec_cmd_rotate(stack_a);
 	if (type == RB || type == RR)
 		exec_cmd_rotate(stack_b);
+	if (type == RRA || type == RRR)
+		exec_cmd_reverse_rotate(stack_a);
+	if (type == RRB || type == RRR)
+		exec_cmd_reverse_rotate(stack_b);
 }

@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 21:59:40 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/03 22:16:45 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/03 22:37:07 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,28 +27,6 @@ int	main(int argc, char **argv)
 	cmds = dlstnew(NIL);
 	check_init_failed_cmds(&stack_a, &stack_b, &cmds);
 	//solve(&stack_a, &stack_b, &cmds);
-	//debug mode
-	dbg_stack(stack_a, stack_b);
-	exec_command(PA, &stack_a, &stack_b);
-	exec_command(RB, &stack_a, &stack_b);
-	exec_command(SA, &stack_a, &stack_b);
-	dbg_stack(stack_a, stack_b);
-	rep(i, 3)
-	{
-		exec_command(PB, &stack_a, &stack_b);
-		if (!i)
-			exec_command(RB, &stack_a, &stack_b);
-	}
-	dbg_stack(stack_a, stack_b);
-	exec_command(RA, &stack_a, &stack_b);
-	exec_command(RB, &stack_a, &stack_b);
-	dbg_stack(stack_a, stack_b);
-	rep(i, 2)
-	{
-		exec_command(RR, &stack_a, &stack_b);
-		dbg_stack(stack_a, stack_b);
-	}
-	//debug end
 	free_all(&stack_a, &stack_b, &cmds);
 	return (0);
 }
