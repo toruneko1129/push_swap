@@ -6,12 +6,11 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 01:12:42 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/04 01:12:19 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/04 01:30:43 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include "../includes/debug.h"
 
 static int	read_from_stdin(t_dlst **cmds)
 {
@@ -24,10 +23,16 @@ static int	read_from_stdin(t_dlst **cmds)
 	{
 		type = cmd_str_totype(cmd);
 		if (type == NIL)
+		{
+			free(cmd);
 			return (FAILED);
+		}
 		new = dlstnew(type);
 		if (new == NULL)
+		{
+			free(cmd);
 			return (FAILED);
+		}
 		dlstadd_back(cmds, new);
 		free(cmd);
 		cmd = get_next_line(STDIN);
@@ -63,7 +68,7 @@ int	main(int argc, char **argv)
 		print_error_exit();
 	}
 	exec_sort(&stack_a, &stack_b, cmds);
-	dbg_dlst(cmds, "cmds");
+	print_checker_result(stack_a, stack_b);
 	free_all(&stack_a, &stack_b, &cmds);
 	return (0);
 }

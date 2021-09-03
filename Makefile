@@ -5,7 +5,7 @@ SRCLIST	=	check_argv.c \
 			load_stack.c \
 			check_issorted.c \
 			exec_command.c \
-			print_error_exit.c \
+			print_result.c \
 			malloc_free_utils.c \
 			dlst_utils.c \
 			dlst_utils2.c \
