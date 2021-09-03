@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 01:20:24 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/03 16:15:25 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/03 18:35:25 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,21 @@ typedef struct s_dlst
 	struct s_dlst	*next;
 }	t_dlst;
 
+typedef enum e_cmd
+{
+	SA,
+	SB,
+	SS,
+	PA,
+	PB,
+	RA,
+	RB,
+	RR,
+	RRA,
+	RRB,
+	RRR,
+}	t_cmd;
+
 void	check_argv(int argc, char **argv);
 void	check_init_failed_stack(t_dlst **stack_a, t_dlst **stack_b);
 void	load_stack(int argc, char **argv, t_dlst **stack_a, t_dlst **stack_b);
@@ -43,5 +58,7 @@ t_dlst	*dlstlast(t_dlst *dlst);
 void	dlstadd_back(t_dlst **dlst, t_dlst *new);
 void	dlstdelone(t_dlst **dlst);
 void	dlstclear(t_dlst **dlst);
+int		cmd_str_totype(char *str);
+char	*cmd_type_tostr(int type);
 
 #endif

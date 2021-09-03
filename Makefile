@@ -7,7 +7,8 @@ SRCLIST	=	check_argv.c \
 			print_error_exit.c \
 			malloc_free_utils.c \
 			dlst_utils.c \
-			dlst_utils2.c
+			dlst_utils2.c \
+			enum_utils.c
 PS_LIST	=	push_swap.c \
 			solve.c
 CK_LIST	=	checker.c
