@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 01:20:24 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/04 17:27:01 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/04 17:53:59 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	exec_command(int type, t_dlst **stack_a, t_dlst **stack_b);
 void	exec_sort(t_dlst **stack_a, t_dlst **stack_b, t_dlst *cmds);
 void	free_all(t_dlst **stack_a, t_dlst **stack_b);
 void	print_checker_result(t_dlst *stack_a, t_dlst *stack_b);
-void	print_error_exit(void);
+void	print_error_exit(t_dlst **stack_a, t_dlst **stack_b);
 t_dlst	*dlstnew(int val);
 void	dlstadd_front(t_dlst **lst, t_dlst *new);
 int		dlstsize(t_dlst *dlst);

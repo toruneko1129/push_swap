@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 17:46:37 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/01 13:44:56 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/04 17:47:04 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ static void	check_isinteger(char *str)
 	if (*str == '+' || *str == '-')
 		++str;
 	if (!*str)
-		print_error_exit();
+		print_error_exit(NULL, NULL);
 	while (*str)
 	{
 		if (!ft_isdigit(*str))
-			print_error_exit();
+			print_error_exit(NULL, NULL);
 		++str;
 	}
 }
@@ -40,7 +40,7 @@ static void	check_isrange_of_int(char *str)
 	while (*str && (res < off || (res == off && *str - '0' <= lim)))
 		res = res * 10 + *(str++) - '0';
 	if (*str)
-		print_error_exit();
+		print_error_exit(NULL, NULL);
 }
 
 static void	check_val_duplicate(int argc, char **argv)
@@ -57,7 +57,7 @@ static void	check_val_duplicate(int argc, char **argv)
 		while (++j < i)
 		{
 			if (ft_atoi(argv[j]) == res)
-				print_error_exit();
+				print_error_exit(NULL, NULL);
 		}
 	}
 }

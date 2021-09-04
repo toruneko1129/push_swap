@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 18:42:44 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/04 01:20:11 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/04 17:46:22 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@ void	print_checker_result(t_dlst *stack_a, t_dlst *stack_b)
 		ft_putendl_fd("KO", STDOUT);
 }
 
-void	print_error_exit(void)
+void	print_error_exit(t_dlst **stack_a, t_dlst **stack_b)
 {
+	free_all(stack_a, stack_b);
 	ft_putendl_fd("Error", STDERR);
 	exit(EXIT_FAILURE);
 }
