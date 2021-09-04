@@ -6,13 +6,13 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 23:56:26 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/04 18:50:55 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/04 23:02:52 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	exec_sort(t_dlst **stack_a, t_dlst **stack_b, t_list *cmds)
+void	exec_sort(t_dlst **a, t_dlst **b, t_list *cmds)
 {
 	int		type;
 
@@ -20,23 +20,34 @@ void	exec_sort(t_dlst **stack_a, t_dlst **stack_b, t_list *cmds)
 	while (cmds != NULL)
 	{
 		type = cmd_str_totype(cmds->content);
-		exec_command(type, stack_a, stack_b);
+		exec_command(type, a, b);
 		cmds = cmds->next;
 	}
 }
 
-void	solve(t_dlst **stack_a, t_dlst **stack_b)
+static void	solve_smallcase(t_dlst **a, t_dlst **b)
 {
-	t_list	*ans;
+	const int	size = dlstsize(*a);
+	t_list		*ans;
 
-	if (check_issorted(*stack_a, *stack_b))
+	if (size == 2)
+		ans = solve_size2(a, b, FALSE);
+	else if (size == 3)
+		ans = solve_size3_small(a, b);
+	else
+		ans = NULL;
+	exec_sort(a, b, ans);
+	ft_lstclear(&ans, NULL);
+}
+
+void	solve(t_dlst **a, t_dlst **b)
+{
+	const int	size = dlstsize(*a);
+
+	if (check_issorted(*a, *b))
 		return ;
-	if (dlstsize(*stack_a) == 2)
-	{
-		ans = solve_size2(stack_a, stack_b, FALSE);
-		exec_sort(stack_a, stack_b, ans);
-		ft_lstclear(&ans, NULL);
-	}
+	else if (size <= 3)
+		solve_smallcase(a, b);
 	//debug
 	//ft_putendl_fd("NOT sorted", STDOUT);
 }

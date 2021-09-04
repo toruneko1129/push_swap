@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 01:20:24 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/04 19:09:44 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/04 23:01:39 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,11 @@ typedef enum e_cmd
 void	check_argv(int argc, char **argv);
 void	check_init_failed_stack(t_dlst **stack_a, t_dlst **stack_b);
 void	load_stack(int argc, char **argv, t_dlst **stack_a, t_dlst **stack_b);
-void	solve(t_dlst **stack_a, t_dlst **stack_b);
+void	solve(t_dlst **a, t_dlst **b);
 int		check_issorted(t_dlst *stack_a, t_dlst *stack_b);
-t_list  *solve_size2(t_dlst **a, t_dlst **b, int is_b);
-void	exec_command(int type, t_dlst **stack_a, t_dlst **stack_b);
+t_list	*solve_size2(t_dlst **a, t_dlst **b, int is_b);
+t_list	*solve_size3_small(t_dlst **a, t_dlst **b);
+void	exec_command(int type, t_dlst **a, t_dlst **b);
 void	free_all(t_dlst **stack_a, t_dlst **stack_b);
 void	print_cmds(t_list *cmds);
 void	print_checker_result(t_dlst *stack_a, t_dlst *stack_b);
