@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 18:08:30 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/03 18:50:27 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/04 18:43:41 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,28 @@
 char	*cmd_type_tostr(int type)
 {
 	if (type == SA)
-		return ("sa");
+		return ("sa\n");
 	else if (type == SB)
-		return ("sb");
+		return ("sb\n");
 	else if (type == SS)
-		return ("ss");
+		return ("ss\n");
 	else if (type == PA)
-		return ("pa");
+		return ("pa\n");
 	else if (type == PB)
-		return ("pb");
+		return ("pb\n");
 	else if (type == RA)
-		return ("ra");
+		return ("ra\n");
 	else if (type == RB)
-		return ("rb");
+		return ("rb\n");
 	else if (type == RR)
-		return ("rr");
+		return ("rr\n");
 	else if (type == RRA)
-		return ("rra");
+		return ("rra\n");
 	else if (type == RRB)
-		return ("rrb");
+		return ("rrb\n");
 	else if (type == RRR)
-		return ("rrr");
-	return ("");
+		return ("rrr\n");
+	return ("\n");
 }
 
 int	cmd_str_totype(char *str)

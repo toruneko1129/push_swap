@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 01:12:42 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/04 17:28:47 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/04 18:30:33 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ static void	read_from_stdin(t_dlst **stack_a, t_dlst **stack_b)
 		if (type == NIL)
 		{
 			free(cmd);
-			free_all(stack_a, stack_b);
-			print_error_exit();
+			print_error_exit(stack_a, stack_b);
 		}
 		exec_command(type, stack_a, stack_b);
 		free(cmd);

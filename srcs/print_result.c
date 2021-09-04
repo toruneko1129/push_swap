@@ -6,11 +6,20 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 18:42:44 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/04 17:46:22 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/04 18:41:53 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+void	print_cmds(t_list *cmds)
+{
+	while (cmds != NULL)
+	{
+		ft_putstr_fd(cmds->content, STDOUT);
+		cmds = cmds->next;
+	}
+}
 
 void	print_checker_result(t_dlst *stack_a, t_dlst *stack_b)
 {
