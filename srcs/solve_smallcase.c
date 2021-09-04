@@ -1,38 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_issorted.c                                   :+:      :+:    :+:   */
+/*   solver_smallcase.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/03 00:08:34 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/04 16:39:39 by hkawakit         ###   ########.fr       */
+/*   Created: 2021/09/04 15:37:31 by hkawakit          #+#    #+#             */
+/*   Updated: 2021/09/04 16:10:45 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	check_issorted(t_dlst *stack_a, t_dlst *stack_b)
+t_dlst	*solve_size2(t_dlst *stack, int is_b)
 {
-	int		res;
+	t_dlst	ans;
+	int		size;
 
-	if (stack_b->val != NIL)
-		return (FALSE);
-	res = -1;
-	while (stack_a->val != NIL)
+	ans = dlstnew(NIL);
+	size = 0;
+	if (ans == NULL)
+		return (NULL);
+	if (stack->val > stack->next->val)
 	{
-		if (stack_a->val != ++res)
-			return (FALSE);
-		stack_a = stack_a->next;
+		dlstadd_back(&ans, dlstnew(SA + is_b));
+		++size;
 	}
-	return (TRUE);
-}
-
-void	exec_sort(t_dlst **stack_a, t_dlst **stack_b, t_dlst *cmds)
-{
-	while (cmds->val != NIL)
+	if (dlstsize(ans) != size)
 	{
-		exec_command(cmds->val, stack_a, stack_b);
-		cmds = cmds->next;
+		dlstclear(&ans);
+		return (NULL);
 	}
+	return (ans);
 }

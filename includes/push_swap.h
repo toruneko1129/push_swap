@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 01:20:24 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/04 01:20:42 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/04 16:35:41 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,9 @@ void	load_stack(int argc, char **argv, t_dlst **stack_a, t_dlst **stack_b);
 void	check_init_failed_cmds(t_dlst **a, t_dlst **b, t_dlst **cmds);
 void	solve(t_dlst **stack_a, t_dlst **stack_b, t_dlst **cmds);
 int		check_issorted(t_dlst *stack_a, t_dlst *stack_b);
+t_dlst	*solve_size2(t_dlst *stack, int is_b);
 void	exec_command(int type, t_dlst **stack_a, t_dlst **stack_b);
+void	exec_sort(t_dlst **stack_a, t_dlst **stack_b, t_dlst *cmds);
 void	free_all(t_dlst **stack_a, t_dlst **stack_b, t_dlst **cmds);
 void	print_checker_result(t_dlst *stack_a, t_dlst *stack_b);
 void	print_error_exit(void);

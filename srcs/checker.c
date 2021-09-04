@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 01:12:42 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/04 01:30:43 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/04 16:35:41 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,6 @@ static int	read_from_stdin(t_dlst **cmds)
 		cmd = get_next_line(STDIN);
 	}
 	return (SUCCESS);
-}
-
-static void	exec_sort(t_dlst **stack_a, t_dlst **stack_b, t_dlst *cmds)
-{
-	while (cmds->val != NIL)
-	{
-		exec_command(cmds->val, stack_a, stack_b);
-		cmds = cmds->next;
-	}
 }
 
 int	main(int argc, char **argv)
