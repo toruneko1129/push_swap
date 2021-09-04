@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   solver_smallcase.c                                 :+:      :+:    :+:   */
+/*   solve_smallcase.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 15:37:31 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/04 16:10:45 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/04 17:07:33 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_dlst	*solve_size2(t_dlst *stack, int is_b)
 {
-	t_dlst	ans;
+	t_dlst	*ans;
 	int		size;
 
 	ans = dlstnew(NIL);
