@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 01:12:42 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/04 17:18:57 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/04 17:28:47 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	read_from_stdin(t_dlst **stack_a, t_dlst **stack_b)
 		if (type == NIL)
 		{
 			free(cmd);
-			free_all(stack_a, stack_b, NULL);
+			free_all(stack_a, stack_b);
 			print_error_exit();
 		}
 		exec_command(type, stack_a, stack_b);
@@ -45,6 +45,6 @@ int	main(int argc, char **argv)
 	load_stack(argc, argv, &stack_a, &stack_b);
 	read_from_stdin(&stack_a, &stack_b);
 	print_checker_result(stack_a, stack_b);
-	free_all(&stack_a, &stack_b, NULL);
+	free_all(&stack_a, &stack_b);
 	return (0);
 }

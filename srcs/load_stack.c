@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 17:11:21 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/02 23:33:15 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/04 17:29:01 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	load_stack(int argc, char **argv, t_dlst **stack_a, t_dlst **stack_b)
 		res = dlstnew(val);
 		if (res == NULL)
 		{
-			free_all(stack_a, stack_b, NULL);
+			free_all(stack_a, stack_b);
 			print_error_exit();
 		}
 		dlstadd_back(stack_a, res);
