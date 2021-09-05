@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 01:20:24 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/04 23:01:39 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/05 15:18:28 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ void	check_init_failed_stack(t_dlst **stack_a, t_dlst **stack_b);
 void	load_stack(int argc, char **argv, t_dlst **stack_a, t_dlst **stack_b);
 void	solve(t_dlst **a, t_dlst **b);
 int		check_issorted(t_dlst *stack_a, t_dlst *stack_b);
-t_list	*solve_size2(t_dlst **a, t_dlst **b, int is_b);
-t_list	*solve_size3_small(t_dlst **a, t_dlst **b);
+void	solve_size2_small(t_dlst **a);
+void	solve_size3_small(t_dlst **a);
 void	exec_command(int type, t_dlst **a, t_dlst **b);
 void	free_all(t_dlst **stack_a, t_dlst **stack_b);
-void	print_cmds(t_list *cmds);
+void	print_cmd(int type);
 void	print_checker_result(t_dlst *stack_a, t_dlst *stack_b);
 void	print_error_exit(t_dlst **stack_a, t_dlst **stack_b);
 t_dlst	*dlstnew(int val);
