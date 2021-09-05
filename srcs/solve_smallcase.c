@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 15:37:31 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/05 15:18:07 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/05 15:36:03 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,11 @@ void	solve_size3_small(t_dlst **a)
 	}
 }
 
-/*
 void	solve_size4_small(t_dlst **a, t_dlst **b)
 {
-	t_list	*ans;
-	int		size;
 	int		type;
+	int		nga;
+	int		ngb;
 
 	while (dlstsize(*b) < 2)
 	{
@@ -57,6 +56,9 @@ void	solve_size4_small(t_dlst **a, t_dlst **b)
 		print_cmd(type);
 		exec_command(type, a, b);
 	}
-	ans = solve_size2(a, b, FALSE);
+	nga = ((*a)->val > (*a)->next->val);
+	ngb = ((*b)->val < (*b)->next->val) * 2;
+	print_cmd(-1 + nga + ngb);
+	print_cmd(PA);
+	print_cmd(PA);
 }
-*/

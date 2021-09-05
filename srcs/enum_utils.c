@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 18:08:30 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/04 18:43:41 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/05 15:31:28 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	*cmd_type_tostr(int type)
 		return ("rrb\n");
 	else if (type == RRR)
 		return ("rrr\n");
-	return ("\n");
+	return ("");
 }
 
 int	cmd_str_totype(char *str)
