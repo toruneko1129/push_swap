@@ -12,7 +12,8 @@ SRCLIST	=	check_argv.c \
 			enum_utils.c
 PS_LIST	=	push_swap.c \
 			solve.c \
-			solve_smallcase.c
+			solve_smallcase.c \
+			solve_bigcase.c
 CK_LIST	=	checker.c
 GNLDIR	=	./get_next_line
 GNLLIST	=	get_next_line_bonus.c \
