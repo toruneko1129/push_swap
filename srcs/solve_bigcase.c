@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   solve_bigcase.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/30 21:59:40 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/05 21:33:06 by hkawakit         ###   ########.fr       */
+/*   Created: 2021/09/05 17:29:44 by hkawakit          #+#    #+#             */
+/*   Updated: 2021/09/05 21:59:00 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	main(int argc, char **argv)
+t_list	*solve_b(t_dlst **a, t_dlst **b, int left, int right)
 {
-	t_dlst	*stack_a;
-	t_dlst	*stack_b;
+	t_list		*ans;
+	const int	lp = (right - left) / 3 + left;
+	const int	rp = (right - left) * 2 / 3 + left;
 
-	check_argv(argc, argv);
-	stack_a = dlstnew(NIL);
-	stack_b = dlstnew(NIL);
-	check_init_failed_stack(&stack_a, &stack_b);
-	load_stack(argc, argv, &stack_a, &stack_b);
-	solve(&stack_a, &stack_b);
-	free_all(&stack_a, &stack_b);
-	return (0);
+	ans = NULL;
+	return (ans);
 }
