@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 23:56:26 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/05 15:36:53 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/05 16:24:11 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ static void	solve_smallcase(t_dlst **a, t_dlst **b)
 		solve_size3_small(a);
 	else if (size == 4)
 		solve_size4_small(a, b);
+	else
+		solve_size5_small(a, b);
 }
 
 void	solve(t_dlst **a, t_dlst **b)
@@ -30,7 +32,7 @@ void	solve(t_dlst **a, t_dlst **b)
 
 	if (check_issorted(*a, *b))
 		return ;
-	else if (size <= 4)
+	else if (size <= 5)
 		solve_smallcase(a, b);
 	//debug
 	//ft_putendl_fd("NOT sorted", STDOUT);

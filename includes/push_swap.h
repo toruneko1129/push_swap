@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 01:20:24 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/05 15:36:27 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/05 16:24:44 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int		check_issorted(t_dlst *stack_a, t_dlst *stack_b);
 void	solve_size2_small(t_dlst **a);
 void	solve_size3_small(t_dlst **a);
 void	solve_size4_small(t_dlst **a, t_dlst **b);
+void	solve_size5_small(t_dlst **a, t_dlst **b);
 void	exec_command(int type, t_dlst **a, t_dlst **b);
 void	free_all(t_dlst **stack_a, t_dlst **stack_b);
 void	print_cmd(int type);

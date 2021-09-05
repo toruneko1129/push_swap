@@ -7,3 +7,4 @@ checker_Mac
 includes/debug.h
 *.dSYM/*
 run.sh
+*.txt
