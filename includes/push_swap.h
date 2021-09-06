@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 01:20:24 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/05 22:24:11 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/06 21:29:31 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,9 @@ void	solve_size2_small(t_dlst **a);
 void	solve_size3_small(t_dlst **a);
 void	solve_size4_small(t_dlst **a, t_dlst **b);
 void	solve_size5_small(t_dlst **a, t_dlst **b);
+t_list	*solve_a(t_dlst **a, t_dlst **b, int left, int right);
 t_list	*solve_b(t_dlst **a, t_dlst **b, int left, int right);
+t_list	*solve_smallsize(t_dlst **a, t_dlst **b, int is_b, int size);
 void	exec_command(int type, t_dlst **a, t_dlst **b);
 void	exec_add_cmd(int type, t_dlst **a, t_dlst **b, t_list **ans);
 void	free_all(t_dlst **stack_a, t_dlst **stack_b);
@@ -69,5 +71,10 @@ void	dlstdelone(t_dlst **dlst);
 void	dlstclear(t_dlst **dlst);
 int		cmd_str_totype(char *str);
 char	*cmd_type_tostr(int type);
+
+//debug
+void	dbg_dlst(t_dlst *dlst, char *name);
+void	dbg_stack(t_dlst *stack_a, t_dlst *stack_b);
+void	dbg_anslen(t_list *ans);
 
 #endif
