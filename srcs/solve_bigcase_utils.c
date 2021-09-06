@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/05 22:56:53 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/06 21:11:10 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/06 22:19:15 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,32 @@ t_list	*solve_size2(t_dlst **a, t_dlst **b, int is_b)
 	ans = NULL;
 	if (!is_b && (*a)->val > (*a)->next->val)
 		exec_add_cmd(SA, a, b, &ans);
+	return (ans);
+}
+
+static t_list	*solve_size3_util2(t_dlst **a, t_dlst **b)
+{
+	t_list		*ans;
+	const int	fst = (*a)->val;
+	const int	snd = (*a)->next->val;
+	const int	trd = (*a)->next->next->val;
+
+	ans = NULL;
+	if (fst < snd && snd < trd)
+		return (NULL);
+	else if (snd < fst && fst < trd)
+		exec_add_cmd(SA, a, b, &ans);
+	else
+	{
+		exec_add_cmd(PB, a, b, &ans);
+		if (trd < snd && snd < fst)
+			exec_add_cmd(SA, a, b, &ans);
+		exec_add_cmd(RA, a, b, &ans);
+		exec_add_cmd(RA, a, b, &ans);
+		exec_add_cmd(PA, a, b, &ans);
+		exec_add_cmd(RRA, a, b, &ans);
+		exec_add_cmd(RRA, a, b, &ans);
+	}
 	return (ans);
 }
 
@@ -36,6 +62,17 @@ static t_list	*solve_size3_util(t_dlst **a, t_dlst **b)
 		exec_add_cmd(SA, a, b, &ans);
 		exec_add_cmd(RRA, a, b, &ans);
 	}
+	else if (trd < fst && fst < snd)
+	{
+		exec_add_cmd(PB, a, b, &ans);
+		exec_add_cmd(PB, a, b, &ans);
+		exec_add_cmd(RA, a, b, &ans);
+		exec_add_cmd(PA, a, b, &ans);
+		exec_add_cmd(PA, a, b, &ans);
+		exec_add_cmd(RRA, a, b, &ans);
+	}
+	else
+		return (solve_size3_util2(a, b));
 	return (ans);
 }
 
@@ -60,7 +97,7 @@ t_list	*solve_size3(t_dlst **a, t_dlst **b, int is_b)
 	return (ans);
 }
 
-t_list	*solve_smallsize_util(t_dlst **a, t_dlst **b, int size)
+static t_list	*solve_smallsize_util(t_dlst **a, t_dlst **b, int size)
 {
 	t_list	*ans;
 	int		cnt;

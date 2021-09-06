@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 23:56:26 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/06 21:47:09 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/06 22:15:07 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,9 @@ static void	solve_bigcase(t_dlst **a, t_dlst **b)
 	while ((*b)->val >= size / 3)
 		exec_add_cmd(PA, a, b, &ans);
 	ft_lstadd_back(&ans, solve_b(a, b, 0, size / 3));
+	dbg_stack(*a, *b);
 	ft_lstadd_back(&ans, solve_a(a, b, size / 3, size * 2 / 3));
+	dbg_stack(*a, *b);
 	ft_lstadd_back(&ans, solve_a(a, b, size * 2 / 3, size));
 	dbg_stack(*a, *b);
 	dbg_anslen(ans);
