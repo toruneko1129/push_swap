@@ -6,21 +6,11 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/05 22:56:53 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/06 22:19:15 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/07 00:02:51 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-t_list	*solve_size2(t_dlst **a, t_dlst **b, int is_b)
-{
-	t_list	*ans;
-
-	ans = NULL;
-	if (!is_b && (*a)->val > (*a)->next->val)
-		exec_add_cmd(SA, a, b, &ans);
-	return (ans);
-}
 
 static t_list	*solve_size3_util2(t_dlst **a, t_dlst **b)
 {
@@ -128,14 +118,15 @@ t_list	*solve_smallsize(t_dlst **a, t_dlst **b, int is_b, int size)
 	t_list	*ans;
 	int		cnt;
 
+	//ft_putnbr_fd(size, STDOUT);
+	//ft_putchar_fd('\n', STDOUT);
+	//dbg_stack(*a, *b);
 	if (size == 2)
 		ans = solve_size2(a, b, is_b);
 	else if (size == 3)
 		ans = solve_size3(a, b, is_b);
-	else if (size == 4)
-		ans = NULL;
 	else
-		ans = NULL;
+		return (solve_size4_5(a, b, is_b, size));
 	cnt = -1;
 	if (!is_b)
 	{

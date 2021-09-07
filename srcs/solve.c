@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 23:56:26 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/06 22:15:07 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/07 00:59:21 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,15 @@ void	dbg_anslen(t_list *ans)
 {
 	ft_putnbr_fd(ft_lstsize(ans), STDOUT);
 	ft_putchar_fd('\n', STDOUT);
+}
+
+void	dbg_ans(t_list *ans)
+{
+	while (ans != NULL)
+	{
+		print_cmd(cmd_str_totype(ans->content));
+		ans = ans->next;
+	}
 }
 
 static void	solve_smallcase(t_dlst **a, t_dlst **b)
@@ -81,7 +90,7 @@ static void	solve_bigcase(t_dlst **a, t_dlst **b)
 
 	ans = NULL;
 	cnt = 0;
-	dbg_stack(*a, *b);
+	//dbg_stack(*a, *b);
 	while (cnt < size * 2 / 3)
 	{
 		res = (*a)->val;
@@ -98,12 +107,14 @@ static void	solve_bigcase(t_dlst **a, t_dlst **b)
 	while ((*b)->val >= size / 3)
 		exec_add_cmd(PA, a, b, &ans);
 	ft_lstadd_back(&ans, solve_b(a, b, 0, size / 3));
-	dbg_stack(*a, *b);
+	//dbg_stack(*a, *b);
 	ft_lstadd_back(&ans, solve_a(a, b, size / 3, size * 2 / 3));
-	dbg_stack(*a, *b);
+	//dbg_stack(*a, *b);
 	ft_lstadd_back(&ans, solve_a(a, b, size * 2 / 3, size));
-	dbg_stack(*a, *b);
-	dbg_anslen(ans);
+	//dbg_stack(*a, *b);
+	dbg_ans(ans);
+	//dbg_anslen(ans);
+	ft_lstclear(&ans, NULL);
 }
 
 void	solve(t_dlst **a, t_dlst **b)

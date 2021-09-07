@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 01:20:24 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/06 21:29:31 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/06 23:29:39 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,9 @@ void	solve_size5_small(t_dlst **a, t_dlst **b);
 t_list	*solve_a(t_dlst **a, t_dlst **b, int left, int right);
 t_list	*solve_b(t_dlst **a, t_dlst **b, int left, int right);
 t_list	*solve_smallsize(t_dlst **a, t_dlst **b, int is_b, int size);
+t_list	*solve_size2(t_dlst **a, t_dlst **b, int is_b);
+t_list	*solve_size3(t_dlst **a, t_dlst **b, int is_b);
+t_list	*solve_size4_5(t_dlst **a, t_dlst **b, int is_b, int size);
 void	exec_command(int type, t_dlst **a, t_dlst **b);
 void	exec_add_cmd(int type, t_dlst **a, t_dlst **b, t_list **ans);
 void	free_all(t_dlst **stack_a, t_dlst **stack_b);

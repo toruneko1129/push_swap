@@ -6,5 +6,6 @@ checker
 checker_Mac
 includes/debug.h
 *.dSYM/*
-run.sh
+*.sh
 *.txt
+push_swap_tester/*
