@@ -5,135 +5,103 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/05 22:56:53 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/07 00:02:51 by hkawakit         ###   ########.fr       */
+/*   Created: 2021/09/07 19:51:52 by hkawakit          #+#    #+#             */
+/*   Updated: 2021/09/08 01:59:01 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static t_list	*solve_size3_util2(t_dlst **a, t_dlst **b)
+int	get_minval(t_dlst **a, t_dlst **b, int is_b, int size)
 {
-	t_list		*ans;
-	const int	fst = (*a)->val;
-	const int	snd = (*a)->next->val;
-	const int	trd = (*a)->next->next->val;
-
-	ans = NULL;
-	if (fst < snd && snd < trd)
-		return (NULL);
-	else if (snd < fst && fst < trd)
-		exec_add_cmd(SA, a, b, &ans);
-	else
-	{
-		exec_add_cmd(PB, a, b, &ans);
-		if (trd < snd && snd < fst)
-			exec_add_cmd(SA, a, b, &ans);
-		exec_add_cmd(RA, a, b, &ans);
-		exec_add_cmd(RA, a, b, &ans);
-		exec_add_cmd(PA, a, b, &ans);
-		exec_add_cmd(RRA, a, b, &ans);
-		exec_add_cmd(RRA, a, b, &ans);
-	}
-	return (ans);
-}
-
-static t_list	*solve_size3_util(t_dlst **a, t_dlst **b)
-{
-	t_list		*ans;
-	const int	fst = (*a)->val;
-	const int	snd = (*a)->next->val;
-	const int	trd = (*a)->next->next->val;
-
-	ans = NULL;
-	if (fst < trd && trd < snd)
-	{
-		exec_add_cmd(RA, a, b, &ans);
-		exec_add_cmd(SA, a, b, &ans);
-		exec_add_cmd(RRA, a, b, &ans);
-	}
-	else if (trd < fst && fst < snd)
-	{
-		exec_add_cmd(PB, a, b, &ans);
-		exec_add_cmd(PB, a, b, &ans);
-		exec_add_cmd(RA, a, b, &ans);
-		exec_add_cmd(PA, a, b, &ans);
-		exec_add_cmd(PA, a, b, &ans);
-		exec_add_cmd(RRA, a, b, &ans);
-	}
-	else
-		return (solve_size3_util2(a, b));
-	return (ans);
-}
-
-t_list	*solve_size3(t_dlst **a, t_dlst **b, int is_b)
-{
-	t_list		*ans;
-	const int	fst = (*b)->val;
-	const int	snd = (*b)->next->val;
-	const int	trd = (*b)->next->next->val;
-
-	if (!is_b)
-		return (solve_size3_util(a, b));
-	ans = NULL;
-	if (fst < trd && trd < snd)
-		exec_add_cmd(RB, a, b, &ans);
-	else if (snd < fst && fst < trd)
-		exec_add_cmd(SB, a, b, &ans);
-	else if (trd < fst && fst < snd)
-		exec_add_cmd(RRB, a, b, &ans);
-	else if (snd < trd && trd < fst)
-		exec_add_cmd(RB, a, b, &ans);
-	return (ans);
-}
-
-static t_list	*solve_smallsize_util(t_dlst **a, t_dlst **b, int size)
-{
-	t_list	*ans;
+	int		min;
+	t_dlst	*tmp;
 	int		cnt;
 
-	ans = NULL;
+	tmp = *a;
+	if (is_b)
+		tmp = *b;
+	min = tmp->val;
 	cnt = -1;
-	if ((*b)->val < (*b)->next->val)
+	while (++cnt < size - 1)
 	{
-		while (++cnt < size)
-		{
-			exec_add_cmd(PA, a, b, &ans);
-			exec_add_cmd(RA, a, b, &ans);
-		}
+		tmp = tmp->next;
+		if (tmp->val < min)
+			min = tmp->val;
 	}
-	else
+	return (min);
+}
+
+int	is_min(t_dlst **a, t_dlst **b, int is_b, int size)
+{
+	const int	min = get_minval(a, b, is_b, size);
+	t_dlst		*tmp;
+	
+	tmp = *a;
+	if (is_b)
+		tmp = *b;
+	return (tmp->val == min);
+}
+
+int	get_maxval(t_dlst **a, t_dlst **b, int is_b, int size)
+{
+	int		max;
+	t_dlst	*tmp;
+	int		cnt;
+
+	tmp = *a;
+	if (is_b)
+		tmp = *b;
+	max = tmp->val;
+	cnt = -1;
+	while (++cnt < size - 1)
 	{
-		while (++cnt < size)
-			exec_add_cmd(PA, a, b, &ans);
-		cnt = -1;
-		while (++cnt < size)
-			exec_add_cmd(RA, a, b, &ans);
+		tmp = tmp->next;
+		if (tmp->val > max)
+			max = tmp->val;
 	}
-	return (ans);
+	return (max);
+}
+
+int	is_max(t_dlst **a, t_dlst **b, int is_b, int size)
+{
+	const int	max = get_maxval(a, b, is_b, size);
+	t_dlst		*tmp;
+	int			cnt;
+
+	tmp = *a;
+	cnt = -1;
+	while (++cnt < size - 1)
+		tmp = tmp->next;
+	if (is_b)
+		tmp = *b;
+	return (tmp->val == max);
 }
 
 t_list	*solve_smallsize(t_dlst **a, t_dlst **b, int is_b, int size)
 {
 	t_list	*ans;
-	int		cnt;
 
-	//ft_putnbr_fd(size, STDOUT);
-	//ft_putchar_fd('\n', STDOUT);
-	//dbg_stack(*a, *b);
 	if (size == 2)
-		ans = solve_size2(a, b, is_b);
+		return (solve_size2(a, b, is_b));
+	ans = NULL;
+	if (is_min(a, b, is_b, size))
+	{
+		if (is_b)
+			exec_add_cmd(PA, a, b, &ans);
+		exec_add_cmd(RA, a, b, &ans);
+		ft_lstadd_back(&ans, solve_smallsize(a, b, is_b, size - 1));
+	}
+	else if (is_max(a, b, is_b, size))
+	{
+		if (is_b)
+			exec_add_cmd(PA, a, b, &ans);
+		ft_lstadd_back(&ans, solve_smallsize(a, b, is_b, size - 1));
+		exec_add_cmd(RA, a, b, &ans);
+	}
 	else if (size == 3)
 		ans = solve_size3(a, b, is_b);
-	else
-		return (solve_size4_5(a, b, is_b, size));
-	cnt = -1;
-	if (!is_b)
-	{
-		while (++cnt < size)
-			exec_add_cmd(RA, a, b, &ans);
-	}
-	else
-		ft_lstadd_back(&ans, solve_smallsize_util(a, b, size));
+	else if (size == 4)
+		ans = solve_size4(a, b, is_b);
 	return (ans);
 }

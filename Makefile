@@ -15,7 +15,8 @@ PS_LIST	=	push_swap.c \
 			solve_smallcase.c \
 			solve_bigcase.c \
 			solve_bigcase_utils.c \
-			solve_bigcase_utils2.c
+			solve_bigcase_utils2.c \
+			solve_bigcase_utils3.c
 CK_LIST	=	checker.c
 GNLDIR	=	./get_next_line
 GNLLIST	=	get_next_line_bonus.c \

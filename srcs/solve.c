@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 23:56:26 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/07 00:59:21 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/08 02:29:02 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static void	solve_smallcase(t_dlst **a, t_dlst **b)
 		solve_size5_small(a, b);
 }
 
-void	exec_add_cmd(int type, t_dlst **a, t_dlst **b, t_list **ans)
+int		exec_add_cmd(int type, t_dlst **a, t_dlst **b, t_list **ans)
 {
 	t_list	*new;
 
@@ -79,6 +79,7 @@ void	exec_add_cmd(int type, t_dlst **a, t_dlst **b, t_list **ans)
 	}
 	ft_lstadd_back(ans, new);
 	exec_command(type, a, b);
+	return (TRUE);
 }
 
 static void	solve_bigcase(t_dlst **a, t_dlst **b)

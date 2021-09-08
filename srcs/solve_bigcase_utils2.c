@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/06 22:42:29 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/06 23:29:23 by hkawakit         ###   ########.fr       */
+/*   Created: 2021/09/07 22:11:04 by hkawakit          #+#    #+#             */
+/*   Updated: 2021/09/08 01:02:37 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,75 +19,68 @@ t_list	*solve_size2(t_dlst **a, t_dlst **b, int is_b)
 	ans = NULL;
 	if (!is_b && (*a)->val > (*a)->next->val)
 		exec_add_cmd(SA, a, b, &ans);
+	if (is_b && (*b)->val > (*b)->next->val)
+	{
+		exec_add_cmd(PA, a, b, &ans);
+		exec_add_cmd(PA, a, b, &ans);
+	}
+	if (is_b && (*b)->val < (*b)->next->val)
+	{
+		exec_add_cmd(PA, a, b, &ans);
+		exec_add_cmd(RA, a, b, &ans);
+		exec_add_cmd(PA, a, b, &ans);
+		exec_add_cmd(RA, a, b, &ans);
+	}
+	else
+	{
+		exec_add_cmd(RA, a, b, &ans);
+		exec_add_cmd(RA, a, b, &ans);
+	}
 	return (ans);
 }
 
-static int	get_minval(t_dlst **a, t_dlst **b, int is_b, int size)
-{
-	int		min;
-	t_dlst	*tmp;
-	int		cnt;
 
-	tmp = *a;
-	if (is_b)
-		tmp = *b;
-	min = tmp->val;
-	cnt = -1;
-	while (++cnt < size - 1)
-	{
-		tmp = tmp->next;
-		if (tmp->val < min)
-			min = tmp->val;
-	}
-	return (min);
-}
-
-static t_list	*solve_size4_5_util(t_dlst **a, t_dlst **b, int size)
+static t_list	*solve_size3_util(t_dlst **a, t_dlst **b)
 {
 	t_list		*ans;
-	const int	min = get_minval(a, b, FALSE, size);
-	int			cnt;
+	const int	fst = (*a)->val;
+	const int	snd = (*a)->next->val;
+	const int	trd = (*a)->next->next->val;
 
 	ans = NULL;
-	cnt = 0;
-	while (cnt < size - 2)
+	if (trd < fst && fst < snd)
 	{
-		if ((*a)->val >= min + 2)
-		{
-			exec_add_cmd(PB, a, b, &ans);
-			++cnt;
-		}
-		else
-			exec_add_cmd(RA, a, b, &ans);
+		exec_add_cmd(PB, a, b, &ans);
+		exec_add_cmd(PB, a, b, &ans);
+		exec_add_cmd(RA, a, b, &ans);
+		ft_lstadd_back(&ans, solve_size2(a, b, TRUE)); 
 	}
-	while (min <= dlstlast(*a)->val && dlstlast(*a)->val < min + 2)
-		exec_add_cmd(RRA, a, b, &ans);
-	ft_lstadd_back(&ans, solve_smallsize(a, b, FALSE, 2));
-	ft_lstadd_back(&ans, solve_smallsize(a, b, TRUE, size - 2));
+	else
+	{
+		exec_add_cmd(PB, a, b, &ans);
+		ft_lstadd_back(&ans, solve_size2(a, b, FALSE)); 
+		exec_add_cmd(PA, a, b, &ans);
+		exec_add_cmd(RA, a, b, &ans);
+	}
 	return (ans);
 }
 
-t_list	*solve_size4_5(t_dlst **a, t_dlst **b, int is_b, int size)
+t_list	*solve_size3(t_dlst **a, t_dlst **b, int is_b)
 {
 	t_list		*ans;
-	const int	min = get_minval(a, b, is_b, size);
-	int			cnt;
+	const int	fst = (*b)->val;
+	const int	snd = (*b)->next->val;
+	const int	trd = (*b)->next->next->val;
 
 	if (!is_b)
-		return (solve_size4_5_util(a, b, size));
+		return (solve_size3_util(a, b));
 	ans = NULL;
-	cnt = 0;
-	while (cnt < 2)
-	{
-		if ((*b)->val < min + 2)
-		{
-			exec_add_cmd(PA, a, b, &ans);
-			++cnt;
-		}
-		else
-			exec_add_cmd(RB, a, b, &ans);
-	}
-	ft_lstadd_back(&ans, solve_smallsize(a, b, FALSE, 2));
-	ft_lstadd_back(&ans, solve_smallsize(a, b, TRUE, size - 2));
+	if (snd < fst && fst < trd)
+		exec_add_cmd(SB, a, b, &ans);
+	else
+		exec_add_cmd(RRB, a, b, &ans);
+	exec_add_cmd(PA, a, b, &ans);
+	exec_add_cmd(RA, a, b, &ans);
+	ft_lstadd_back(&ans, solve_size2(a, b, TRUE));
 	return (ans);
 }
