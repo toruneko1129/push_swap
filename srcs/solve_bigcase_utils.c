@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 19:51:52 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/09 14:53:25 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/09 14:58:43 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,6 @@ t_list	*solve_smallsize(t_dlst **a, t_dlst **b, int is_b, int size)
 	else if (size == 3)
 		ans = solve_size3(a, b, is_b);
 	else
-		ans = solve_size_over3(a, b, is_b, size);
+		ans = solve_size_over3(a, b, FALSE, size);
 	return (ans);
 }

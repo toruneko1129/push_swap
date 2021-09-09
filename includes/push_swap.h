@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 01:20:24 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/09 14:29:57 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/09 15:03:46 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ void	solve_size5_small(t_dlst **a, t_dlst **b);
 t_list	*solve_a(t_dlst **a, t_dlst **b, int left, int right);
 t_list	*solve_b(t_dlst **a, t_dlst **b, int left, int right);
 t_list	*solve_smallsize(t_dlst **a, t_dlst **b, int is_b, int size);
-t_list	*solve_smallsize_util(t_dlst **a, t_dlst **b, int size);
 int		get_minval(t_dlst **a, t_dlst **b, int is_b, int size);
 int		get_maxval(t_dlst **a, t_dlst **b, int is_b, int size);
 t_list	*solve_size1(t_dlst **a, t_dlst **b, int is_b);
@@ -65,11 +64,11 @@ t_list	*solve_size3(t_dlst **a, t_dlst **b, int is_b);
 t_list	*solve_size_over3(t_dlst **a, t_dlst **b, int is_b, int size);
 void	exec_command(int type, t_dlst **a, t_dlst **b);
 int		exec_add_cmd(int type, t_dlst **a, t_dlst **b, t_list **ans);
-void	free_all(t_dlst **stack_a, t_dlst **stack_b);
 void	print_cmd(int type);
 void	print_all_cmd(t_list *ans);
 void	print_checker_result(t_dlst *stack_a, t_dlst *stack_b);
 void	print_error_exit(t_dlst **stack_a, t_dlst **stack_b);
+void	free_all(t_dlst **stack_a, t_dlst **stack_b);
 t_dlst	*dlstnew(int val);
 void	dlstadd_front(t_dlst **lst, t_dlst *new);
 int		dlstsize(t_dlst *dlst);
@@ -79,10 +78,5 @@ void	dlstdelone(t_dlst **dlst);
 void	dlstclear(t_dlst **dlst);
 int		cmd_str_totype(char *str);
 char	*cmd_type_tostr(int type);
-
-//debug
-void	dbg_dlst(t_dlst *dlst, char *name);
-void	dbg_stack(t_dlst *stack_a, t_dlst *stack_b);
-void	dbg_anslen(t_list *ans);
 
 #endif

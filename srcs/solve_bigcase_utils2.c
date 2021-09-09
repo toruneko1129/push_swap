@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 22:11:04 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/09 14:26:03 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/09 14:59:00 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_list	*solve_size2(t_dlst **a, t_dlst **b, int is_b)
 	return (ans);
 }
 
-int	solve_size3_util(t_dlst **a, t_dlst **b, int is_b, int pos)
+static int	solve_size3_util(t_dlst **a, t_dlst **b, int is_b, int pos)
 {
 	t_dlst	*tmp;
 

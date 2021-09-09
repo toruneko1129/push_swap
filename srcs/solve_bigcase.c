@@ -6,13 +6,13 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 17:43:34 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/09 12:31:17 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/09 14:58:09 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-t_list	*solve_a_util(t_dlst **a, t_dlst **b, int l, int r)
+static t_list	*solve_a_util(t_dlst **a, t_dlst **b, int l, int r)
 {
 	t_list		*ans;
 	const int	lp = (r - l) / 3 + l;
