@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 18:42:44 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/05 15:18:31 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/09 14:29:16 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,15 @@
 void	print_cmd(int type)
 {
 	ft_putstr_fd(cmd_type_tostr(type), STDOUT);
+}
+
+void	print_all_cmd(t_list *ans)
+{
+	while (ans != NULL)
+	{
+		ft_putstr_fd(ans->content, STDOUT);
+		ans = ans->next;
+	}
 }
 
 void	print_checker_result(t_dlst *stack_a, t_dlst *stack_b)

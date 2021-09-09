@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 19:51:52 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/09 12:22:19 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/09 14:26:25 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	is_min(t_dlst **a, t_dlst **b, int is_b, int size)
 {
 	const int	min = get_minval(a, b, is_b, size);
 	t_dlst		*tmp;
-	
+
 	tmp = *a;
 	if (is_b)
 		tmp = *b;
@@ -95,5 +95,7 @@ t_list	*solve_smallsize(t_dlst **a, t_dlst **b, int is_b, int size)
 	}
 	else if (size == 3)
 		ans = solve_size3(a, b, is_b);
+	else
+		ans = solve_size_over3(a, b, is_b, size);
 	return (ans);
 }

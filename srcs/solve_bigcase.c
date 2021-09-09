@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 17:43:34 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/09 12:17:34 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/09 12:31:17 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_list	*solve_a(t_dlst **a, t_dlst **b, int l, int r)
 	const int	rp = (r - l) * 2 / 3 + l;
 	int			cnt;
 
-	if (r - l <= 3)
+	if (r - l <= 4)
 		return (solve_smallsize(a, b, FALSE, r - l));
 	ans = solve_a_util(a, b, l, r);
 	cnt = -1;

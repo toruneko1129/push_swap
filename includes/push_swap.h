@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 01:20:24 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/09 12:16:11 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/09 14:29:57 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	exec_command(int type, t_dlst **a, t_dlst **b);
 int		exec_add_cmd(int type, t_dlst **a, t_dlst **b, t_list **ans);
 void	free_all(t_dlst **stack_a, t_dlst **stack_b);
 void	print_cmd(int type);
+void	print_all_cmd(t_list *ans);
 void	print_checker_result(t_dlst *stack_a, t_dlst *stack_b);
 void	print_error_exit(t_dlst **stack_a, t_dlst **stack_b);
 t_dlst	*dlstnew(int val);
