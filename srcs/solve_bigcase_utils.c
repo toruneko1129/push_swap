@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 19:51:52 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/09 14:26:25 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/09 14:53:25 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,6 @@ int	get_minval(t_dlst **a, t_dlst **b, int is_b, int size)
 	return (min);
 }
 
-int	is_min(t_dlst **a, t_dlst **b, int is_b, int size)
-{
-	const int	min = get_minval(a, b, is_b, size);
-	t_dlst		*tmp;
-
-	tmp = *a;
-	if (is_b)
-		tmp = *b;
-	return (tmp->val == min);
-}
-
 int	get_maxval(t_dlst **a, t_dlst **b, int is_b, int size)
 {
 	int		max;
@@ -63,7 +52,7 @@ int	get_maxval(t_dlst **a, t_dlst **b, int is_b, int size)
 	return (max);
 }
 
-int	is_max(t_dlst **a, t_dlst **b, int is_b, int size)
+static int	is_max(t_dlst **a, t_dlst **b, int is_b, int size)
 {
 	const int	max = get_maxval(a, b, is_b, size);
 	t_dlst		*tmp;
