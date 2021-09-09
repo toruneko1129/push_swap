@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 01:20:24 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/08 01:53:21 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/09 12:16:11 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,10 @@ t_list	*solve_smallsize(t_dlst **a, t_dlst **b, int is_b, int size);
 t_list	*solve_smallsize_util(t_dlst **a, t_dlst **b, int size);
 int		get_minval(t_dlst **a, t_dlst **b, int is_b, int size);
 int		get_maxval(t_dlst **a, t_dlst **b, int is_b, int size);
+t_list	*solve_size1(t_dlst **a, t_dlst **b, int is_b);
 t_list	*solve_size2(t_dlst **a, t_dlst **b, int is_b);
 t_list	*solve_size3(t_dlst **a, t_dlst **b, int is_b);
-t_list	*solve_size4(t_dlst **a, t_dlst **b, int is_b);
+t_list	*solve_size_over3(t_dlst **a, t_dlst **b, int is_b, int size);
 void	exec_command(int type, t_dlst **a, t_dlst **b);
 int		exec_add_cmd(int type, t_dlst **a, t_dlst **b, t_list **ans);
 void	free_all(t_dlst **stack_a, t_dlst **stack_b);

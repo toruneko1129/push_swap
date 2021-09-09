@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 19:51:52 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/08 01:59:01 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/09 12:22:19 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,26 +82,18 @@ t_list	*solve_smallsize(t_dlst **a, t_dlst **b, int is_b, int size)
 {
 	t_list	*ans;
 
+	ans = NULL;
+	if (size == 1)
+		return (solve_size1(a, b, is_b));
 	if (size == 2)
 		return (solve_size2(a, b, is_b));
-	ans = NULL;
-	if (is_min(a, b, is_b, size))
-	{
-		if (is_b)
-			exec_add_cmd(PA, a, b, &ans);
-		exec_add_cmd(RA, a, b, &ans);
-		ft_lstadd_back(&ans, solve_smallsize(a, b, is_b, size - 1));
-	}
-	else if (is_max(a, b, is_b, size))
+	if (is_max(a, b, is_b, size))
 	{
 		if (is_b)
 			exec_add_cmd(PA, a, b, &ans);
 		ft_lstadd_back(&ans, solve_smallsize(a, b, is_b, size - 1));
-		exec_add_cmd(RA, a, b, &ans);
 	}
 	else if (size == 3)
 		ans = solve_size3(a, b, is_b);
-	else if (size == 4)
-		ans = solve_size4(a, b, is_b);
 	return (ans);
 }

@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 23:56:26 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/08 02:29:02 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/09 12:23:48 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,31 +87,30 @@ static void	solve_bigcase(t_dlst **a, t_dlst **b)
 	t_list		*ans;
 	int			cnt;
 	const int	size = dlstsize(*a);
-	int			res;
 
 	ans = NULL;
 	cnt = 0;
 	//dbg_stack(*a, *b);
 	while (cnt < size * 2 / 3)
 	{
-		res = (*a)->val;
-		if (res < size * 2 / 3)
+		if ((*a)->val < size * 2 / 3)
 		{
-			exec_add_cmd(PB, a, b, &ans);
-			if (res < size / 3)
-				exec_add_cmd(RB, a, b, &ans);
-			++cnt;
+			cnt += exec_add_cmd(PB, a, b, &ans);
+			if ((*b)->val >= size / 3)
+				exec_add_cmd(RB + ((*a)->val >= size * 2 / 3), a, b, &ans);
 		}
 		else
 			exec_add_cmd(RA, a, b, &ans);
 	}
-	while ((*b)->val >= size / 3)
-		exec_add_cmd(PA, a, b, &ans);
-	ft_lstadd_back(&ans, solve_b(a, b, 0, size / 3));
-	//dbg_stack(*a, *b);
-	ft_lstadd_back(&ans, solve_a(a, b, size / 3, size * 2 / 3));
+	cnt = -1;
+	while (++cnt < size * 2 / 3 - size / 3)
+		exec_add_cmd(RRB, a, b, &ans);
 	//dbg_stack(*a, *b);
 	ft_lstadd_back(&ans, solve_a(a, b, size * 2 / 3, size));
+	//dbg_stack(*a, *b);
+	ft_lstadd_back(&ans, solve_b(a, b, size / 3, size * 2 / 3));
+	//dbg_stack(*a, *b);
+	ft_lstadd_back(&ans, solve_b(a, b, 0, size / 3));
 	//dbg_stack(*a, *b);
 	dbg_ans(ans);
 	//dbg_anslen(ans);
