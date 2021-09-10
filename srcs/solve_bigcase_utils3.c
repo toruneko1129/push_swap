@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 00:56:08 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/09 15:14:04 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/10 16:26:09 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ static t_list	*solve_size_o3_util(t_dlst **a, t_dlst **b, int size, int min)
 	ans = NULL;
 	while (--size)
 	{
-		if (dlstlast(*a)->val == min + size - 1)
-			exec_add_cmd(RRA, a, b, &ans);
-		else if ((*b)->val == min + size - 1)
+		if ((*b)->val == min + size - 1)
 		{
 			exec_add_cmd(PA, a, b, &ans);
 			if ((*a)->val > (*a)->next->val)
