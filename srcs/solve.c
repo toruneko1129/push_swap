@@ -6,7 +6,7 @@
 /*   By: hkawakit <hkawakit@student.42tokyo.j>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 23:56:26 by hkawakit          #+#    #+#             */
-/*   Updated: 2021/09/09 14:30:17 by hkawakit         ###   ########.fr       */
+/*   Updated: 2021/09/11 17:08:33 by hkawakit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,13 @@ static void	solve_bigcase(t_dlst **a, t_dlst **b)
 		if ((*a)->val < size * 2 / 3)
 		{
 			cnt += exec_add_cmd(PB, a, b, &ans);
-			if ((*b)->val >= size / 3)
+			if ((*b)->val < size / 3)
 				exec_add_cmd(RB + ((*a)->val >= size * 2 / 3), a, b, &ans);
 		}
 		else
 			exec_add_cmd(RA, a, b, &ans);
 	}
 	cnt = -1;
-	while (++cnt < size * 2 / 3 - size / 3)
-		exec_add_cmd(RRB, a, b, &ans);
 	ft_lstadd_back(&ans, solve_a(a, b, size * 2 / 3, size));
 	ft_lstadd_back(&ans, solve_b(a, b, size / 3, size * 2 / 3));
 	ft_lstadd_back(&ans, solve_b(a, b, 0, size / 3));
